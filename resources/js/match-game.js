@@ -4,11 +4,8 @@ var MatchGame = {};
   Sets up a new game after HTML document has loaded.
   Renders a 4x4 board of cards.
 */
-$(document).ready(function(){
-	MatchGame.renderCards('array_random', '#game');
-	
-	
 
+$(document).ready(function(){
 /*
   Generates and returns an array of matching card values.
  */
@@ -32,12 +29,16 @@ MatchGame.generateCardValues = function () {
 	return array_random;
 };
 
+
 /*
   Converts card values to jQuery card objects and adds them to the supplied game
   object.
 */
 
+//function MatchGame.renderCards(cardValues, $game) {
+
 MatchGame.renderCards = function(cardValues, $game) {
+	$game.data(flipped) = [];
 	var arrayColor = [
 	'hsl(25, 85%, 65%)',
 	'hsl(55, 85%, 65%)',
@@ -56,13 +57,10 @@ MatchGame.renderCards = function(cardValues, $game) {
 		$newCard.data('row', 1);
 		$newCard.data('flipped', false);
 		$newCard.data(cardValues[arrayColor]-1);
-		$game.append('newCard');
+		$game.append($newCard);
 	}
-
-
+MatchGame.renderCards(array_random, '#game');
 };
-
-
 
 /*
   Flips over a given card and checks to see if two cards are flipped over.
@@ -70,8 +68,13 @@ MatchGame.renderCards = function(cardValues, $game) {
  */
 
 MatchGame.flipCard = function($card, $game) {
+	
+
 
 };
 
-});
+
+
+});	
+
 
