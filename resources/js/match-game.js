@@ -20,7 +20,7 @@ MatchGame.generateCardValues = function () {
 	}
 	//empty array
 	var array_random = [];
-	while(array_order.length !== 0){
+	while(array_order.length > 0){
 		var random = Math.floor(Math.random() * array_order.length);
 		array_random.push(array_order[random]); //array_random.push([random]);
 		array_order.splice(random, 1); //array.splice(random);
@@ -38,7 +38,7 @@ MatchGame.generateCardValues = function () {
 //function MatchGame.renderCards(cardValues, $game) {
 
 MatchGame.renderCards = function(cardValues, $game) {
-	$game.data(flipped) = [];
+	$game.data(flipped, []);
 	var arrayColor = [
 	'hsl(25, 85%, 65%)',
 	'hsl(55, 85%, 65%)',
@@ -56,7 +56,7 @@ MatchGame.renderCards = function(cardValues, $game) {
 		var $newCard = '<div class="card col-xs-3"></div>';
 		$newCard.data('row', 1);
 		$newCard.data('flipped', false);
-		$newCard.data(cardValues[arrayColor]-1);
+		$newCard.data(cardValues[arrayColor[v] -1]);
 		$game.append($newCard);
 	}
 MatchGame.renderCards(array_random, '#game');
