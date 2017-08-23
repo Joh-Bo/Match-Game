@@ -19,7 +19,9 @@ MatchGame.renderCards(MatchGame.generateCardValues(), $('#game'));
 MatchGame.generateCardValues = function () {
 	var array_1 = []; //  unplaced, in-order card values
 	for(var i = 1;i < 9; i++){
-		array_1.push(i, i); // add the current value to the array twice
+		array_1.push(i); // add the current value to the array twice
+		array_1.push(i);
+
 	}
 	var array_2 = []; //randomly ordered array
 	while(array_1.length > 0){
@@ -42,9 +44,9 @@ MatchGame.renderCards = function(cardValues, $game) {
 	
 	var colorArray = ['hsl(25, 85%, 65%)','hsl(55, 85%, 65%)','hsl(90, 85%, 65%)','hsl(160, 85%, 65%)','hsl(220, 85%, 65%)','hsl(265, 85%, 65%)','hsl(310, 85%, 65%)','hsl(360, 85%, 65%)'];
 	$('#game').empty();
-	for(var v = 1; v < cardValues.length; v++){
+	for(var v = 0; v < cardValues.length; v++){
 		var $card = $('<div class="card col-xs-3"></div>');
-		$card.data('row', 1); //question 38 à revoir
+		$card.data(cardValues, 1); //question 38 à revoir
 		$card.data('flipped', false);
 		$card.data(colorArray[cardValues.length -1]); //41
 		$game.append($card);
