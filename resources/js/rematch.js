@@ -1,3 +1,4 @@
+
 var MatchGame = {};
 
 /*
@@ -62,7 +63,18 @@ MatchGame.renderCards = function(cardValues, $game) {
  */
 
 MatchGame.flipCard = function($card, $game) {
-	
+	var flipCard = {
+		index: [],
+		color: colorArray,
+		isFlipped: false,
+	};
+		if(flipCard !== isFlipped){
+			return;
+		}else{
+		$game.data($card);
+		}
+		$card.css('background-color');
+		card.push(flipCard -1);
 
 
 };
