@@ -12,20 +12,20 @@ h1{
 	font-weight: bold;
 	font-size: 2.5rem;
 	color: rgb(32, 64, 86);
-	padding-bottom: 10px;
+	padding-bottom: 0.7rem;
 }
 h4{
 	font-size: 1rem;
 	font-weight: 500;
-	padding: 10px 0 10px;
+	padding: 0.7rem 0 0.7rem;
 }
 .reload{
-	width: 200px;
+	width: 14rem;
 	color: rgb(74,74, 74);
 	border: 1px solid rgb(74,74, 74);
-	border-radius: 5px;
-	margin-top: 20px;
-	padding: 10px;
+	border-radius: 0.35rem;
+	margin-top: 1.4rem;
+	padding: 0.7rem;
 	text-align: center;
 	cursor: pointer;
 
@@ -33,7 +33,7 @@ h4{
 #instruction .col-xs-3{
 	color: rgb(74,74, 74);
 	float: left;
-	margin-bottom: 20px;
+	margin-bottom: 1.4rem;
 }
 #game .col-xs-9{
 	float: right;
@@ -43,11 +43,11 @@ h4{
 	height: 12.5rem;
 	background-color: rgb(32, 64, 86);
 	border: 4px solid #ffffff;
-	border-radius: 8px;
+	border-radius: 0.5rem;
 	font-weight: 900;
 	font-size: 7rem;
 	text-align: center;
-	padding: 40px 0;
+	padding: 1.4rem 0;
 
 
 }
@@ -58,7 +58,38 @@ h4{
 .card p:hover{
 	cursor: pointer;
 }
-/*.row card-up{
-	background-color: rgb(153, 153, 153);
-	color: rgb(204, 204, 204);
-}*/
+
+/*Mobile game*/
+@media screen and (max-width: 480px){
+	body{
+		width: 100%;
+
+	}
+	.container{
+		margin: .7rem 1.4rem;
+
+	}
+	h1{
+		text-align: center;
+	}
+	.row{
+		display: flex;
+		flex-direction: column;
+	}
+	#instruction,
+	#game{
+		width: 100%;
+
+	}
+	#game{
+		margin-top: 0.7rem;
+	}
+	.row .card{
+		height: 6rem;
+		font-size: 3.5rem;
+	}
+	.reload{
+		margin: 1.4rem 3.5rem;
+	}
+
+}
