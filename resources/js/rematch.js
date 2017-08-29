@@ -52,12 +52,11 @@ MatchGame.renderCards = function(cardValues, $game) {
 		var $card = $('<div class="card col-xs-3"></div>');
 		$card.data('value', cardValues[v]); //question 38 à revoir
 		$card.data('flipped', false);
-		$card.data('color', colorArray[cardValues[v - 1]]); //41
+		$card.data('color', colorArray[cardValues[v]-1]); //41
 		$game.append($card);
 
 		$card.click(function(){
-		MatchGame.flipCard($(this), $game);
-		
+			MatchGame.flipCard($(this), $game);			
 		});
 	}
 
@@ -72,23 +71,37 @@ MatchGame.renderCards = function(cardValues, $game) {
  */
 
 MatchGame.flipCard = function($card, $game) {
-	
-		var $flippedCards = $game.data('flippedCards');
-
 		if($card.data('flipped') === true){
 			return;
-		}else{
-			$card.css('background-color', $card.data('color'));
-			$card.append($card.data('value'));
-			$card.data('flipped', true);
-			$flippedCards.push($card);
-		}
-		if($flippedCards == 2){
-			$card.data('background-color')
-
 		}
 
+		$card.data('flipped', true);
 
+		// Change state to flipped
+		$card.css('background-color', $card.data('color'));
+		$card.append($card.data('value'));
+		$card.data('flipped', true);
+
+		// Remember order of cards flipped
+		var flippedCards = $game.data('flippedCards');
+		flippedCards.push($card);
+		$game.data('flippedCards', flippedCards);
+
+		if (flippedCards.length % 2 === 0) {
+			var previous = flippedCards.slice(-2, -1)[0]
+			if (previous.data('value') === $card.data('value')) {
+				// Matches!
+				$card.add(previous).css('background-color', 'rgb(153, 153, 153').css({'color' : 'rgb(204, 204, 204)'});
+			} else {
+				// Doesn't mach!
+				setTimeout(function() {
+					previous.removeAttr('style').data('flipped', false).empty();
+					$card.removeAttr('style').data('flipped', false).empty();
+				}, 1000);
+			}
+		} else {
+			// Nothing to do on card 1, 3, 5 etc.
+		}
 };
 
 
