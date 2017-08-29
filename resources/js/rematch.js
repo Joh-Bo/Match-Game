@@ -102,6 +102,14 @@ MatchGame.flipCard = function($card, $game) {
 		} else {
 			// Nothing to do on card 1, 3, 5 etc.
 		}
+
+		//Play Again function
+		
+			$('.reload').click(function(){
+				location.reload();
+			});
+
+		
 };
 
 
